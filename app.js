@@ -77,6 +77,17 @@ app.get('/param/:building', function (req, res) {
     res.send('Param 3');
 });
 
+if (module === require.main) {
+  // [START server]
+  // Start the server
+  const server = app.listen(process.env.PORT || 8080, () => {
+    const port = server.address().port;
+    console.log(`App listening on port ${port}`);
+  });
+  // [END server]
+  
+/*
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
+*/
