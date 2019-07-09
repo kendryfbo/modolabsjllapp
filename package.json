@@ -8,15 +8,9 @@
     "firebase-admin": "^8.2.0"
   },
   "scripts": {
-   "start": "node app.js",
-   "e2e": "repo-tools test deploy",
-   "test": "repo-tools test app",
-   "cover": "nyc --cache npm test; nyc report --reporter=html"
- },
-  "devDependencies": {},
-  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "devDependencies": {},
   "keywords": [
     "modolabsjll"
   ],
