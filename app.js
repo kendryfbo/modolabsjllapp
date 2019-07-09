@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 // [END hello_world]
 
-app.get('/', function (req, res) {
+app.get('/two', function (req, res) {
   console.log("HTTP Get Request");
   res.status(200).send("HTTP GET Request");
 });
