@@ -24,6 +24,26 @@ app.get('/', (req, res) => {
 });
 // [END hello_world]
 
+app.get('/', function (req, res) {
+  console.log("HTTP Get Request");
+  res.send("HTTP GET Request");
+});
+
+app.put('/', function (req, res) {
+  console.log("HTTP Put Request");
+  res.send("HTTP PUT Request");
+});
+
+app.post('/', function (req, res) {
+  console.log("HTTP POST Request");
+  res.send("HTTP POST Request");
+});
+
+app.delete('/', function (req, res) {
+  console.log("HTTP DELETE Request");
+  res.send("HTTP DELETE Request");
+});
+
 if (module === require.main) {
   // [START server]
   // Start the server
