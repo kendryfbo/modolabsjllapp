@@ -26,22 +26,22 @@ app.get('/', (req, res) => {
 
 app.get('/', function (req, res) {
   console.log("HTTP Get Request");
-  res.send("HTTP GET Request");
+  res.status(200).send("HTTP GET Request");
 });
 
 app.put('/', function (req, res) {
   console.log("HTTP Put Request");
-  res.send("HTTP PUT Request");
+  res.status(200).send("HTTP PUT Request");
 });
 
 app.post('/', function (req, res) {
   console.log("HTTP POST Request");
-  res.send("HTTP POST Request");
+  res.status(200).send("HTTP POST Request");
 });
 
 app.delete('/', function (req, res) {
   console.log("HTTP DELETE Request");
-  res.send("HTTP DELETE Request");
+  res.status(200).send("HTTP DELETE Request");
 });
 
 if (module === require.main) {
