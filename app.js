@@ -1,83 +1,28 @@
+// Copyright 2018, Google LLC.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 'use strict';
 
-var express = require('express');
-var app = express();
+const express = require('express');
 
-var admin = require("firebase-admin");
-var serviceAccount = require("./modolabsjll-firebase-adminsdk-sj7ow-316c82c4df.json");
+const app = express();
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://modolabsjll.firebaseio.com"
+// [START hello_world]
+// Say hello!
+app.get('/', (req, res) => {
+  res.status(200).send('Hello, world!');
 });
-
-var database = admin.database();
-
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-app.get('/insert', function (req, res) {
-
-  var ref = database.ref('list');
-  var usersRef = ref.child("users");
-
-  usersRef.set({
-    alanisawesome: {
-      date_of_birth: "June 22, 1912",
-      full_name: "Alan Turing"
-    },
-    gracehop: {
-      date_of_birth: "December 9, 1906",
-      full_name: "Grace Hopper"
-    }
-  });
-
-  console.log(database.ref);
-  res.send('Inserted!');
-
-});
-
-app.get('/update', function (req, res) {
-
-  var ref = database.ref('list');
-  var usersRef = ref.child("users");
-  var hopperRef = usersRef.child("gracehop");
-
-  hopperRef.update({
-    "nickname": "Amazing Grace"
-  });
-
-  res.send('Updated!');
-
-});
-
-app.get('/get', function (req, res) {
-
-    res.send('getter');
-    var ref = database.ref('list');
-    ref.on("value", function(snapshot) {
-        res.json(snapshot.val());
-      console.log(snapshot);
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-});
-
-app.get('/param', function (req, res) {
-
-    var value = req.query.color1
-    console.log(req.query);
-    console.log(value);
-    res.send('Param 1' + value);
-});
-app.get('/param?building', function (req, res) {
-
-    res.send('Param 2');
-});
-app.get('/param/:building', function (req, res) {
-
-    res.send('Param 3');
-});
+// [END hello_world]
 
 if (module === require.main) {
   // [START server]
@@ -90,8 +35,3 @@ if (module === require.main) {
 }
 
 module.exports = app;
-/*
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
-*/

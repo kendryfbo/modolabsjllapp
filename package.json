@@ -1,19 +1,39 @@
 {
-  "name": "modolabsjll",
+  "name": "nodejs-getting-started",
+  "description": "End to end sample for running Node.js applications on Google Cloud Platform",
   "version": "1.0.0",
-  "description": "Modo Labs JLL App",
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": "https://github.com/GoogleCloudPlatform/nodejs-getting-started",
   "main": "app.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "firebase-admin": "^8.2.0"
+  "private": true,
+  "cloud-repo-tools": {
+    "requiresKeyFile": true,
+    "requiresProjectId": true,
+    "test": {
+      "app": {
+        "args": [
+          "app.js"
+        ],
+        "msg": "Hello, world!"
+      }
+    }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "e2e": "repo-tools test deploy",
+    "test": "repo-tools test app",
+    "cover": "nyc --cache npm test; nyc report --reporter=html"
   },
-  "devDependencies": {},
-  "keywords": [
-    "modolabsjll"
-  ],
-  "author": "Kendry Finol",
-  "license": "ISC"
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "^3.0.0",
+    "ava": "^0.25.0",
+    "supertest": "^4.0.0"
+  }
 }
